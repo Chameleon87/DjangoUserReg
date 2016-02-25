@@ -18,7 +18,7 @@ def auth_view(request):
     user = auth.authenticate(username=username, password=password)
     if user is not None:
         auth.login(request, user)
-        return render(request, 'accounts/loggedin.html')
+        return render(request, 'profile.html')
     else:
         return HttpResponseRedirect('accounts/invalid')
 
