@@ -2,7 +2,7 @@ from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib import auth
-from django.contrib.auth.forms import UserCreationForm
+from forms import RegistrationForm
 from django.template.context_processors import csrf
 from django.core.urlresolvers import reverse
 
@@ -18,7 +18,7 @@ def auth_view(request):
     user = auth.authenticate(username=username, password=password)
     if user is not None:
         auth.login(request, user)
-        return render(request, 'profile.html')
+        return render(request, 'accounts/loggedin.html')
     else:
         return HttpResponseRedirect('accounts/invalid')
 
@@ -34,17 +34,17 @@ def logout(request):
     return render(request, 'accounts/logout.html')
 
 def register_user(request):
-    form = UserCreationForm()
+    form = RegistrationForm()
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'registration/register_success.html')
+            return render(request, 'accounts/register_success.html')
         else:
-            form = UserCreationForm()
+            form = RegistrationForm()
             return render(request, 'accounts/user_exists.html')
     else:
-        return render(request, 'registration/register.html',
+        return render(request, 'accounts/register.html',
                 { "form" : form })
 
 
