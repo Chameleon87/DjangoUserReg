@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<ul>
+   <li><a href="{% url 'all' %}">Articles</a></li>
+   <li><a href="{% url 'create' %}">Create Article</a></li>
+</ul>
+
+<h2>Language is: {{language}}</h2>
+
+<h2>Session language is: {{session_language}}</h2>
+
+{% if articles.count > 0 %}
+
+{% for article in articles %}
+<div>
+    <h2><a href="/articles/get/{{article.id}}/">{{article.title}}</a></h2>
+    <p>{{article.body|lower|truncatewords:"10"}}</p>
+</div>
+{% endfor %}
+{% else %}
+<p>None to show!</p>
+{% endif %}
+{% endblock %}

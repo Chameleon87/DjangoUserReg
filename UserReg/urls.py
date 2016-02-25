@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include, patterns
 from django.contrib import admin
 from . import views
+from article import urls
 
 urlpatterns = patterns('',
         url(r'^$', views.index, name='home'),
@@ -26,7 +27,8 @@ urlpatterns = patterns('',
         url(r'^accounts/loggedin/$', views.loggedin, name='loggedin'),
         url(r'^accounts/invalid/$', views.invalid_login),
         url(r'^accounts/user_exists/$', views.register_user),
-        url(r'^registration/register/$', views.register_user, name='register'),
-        url(r'^registration/register_success/$', views.register_success, name='register_success'),
+        url(r'^accounts/register/$', views.register_user, name='register'),
+        url(r'^accounts/register_success/$', views.register_success, name='register_success'),
+        url(r'^articles/', include('article.urls')),
         url(r'^admin/', admin.site.urls),
 )
