@@ -18,12 +18,15 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = patterns('',
-        url(r'^$', views.index),
-        url(r'^index/$', views.index),
-        url(r'^accounts/login/$', views.login),
+        url(r'^$', views.index, name='home'),
+        url(r'^index/$', views.index, name='home'),
+        url(r'^accounts/login/$', views.login, name='login'),
         url(r'^accounts/auth/$', views.auth_view),
-        url(r'^accounts/logout/$', views.logout),
-        url(r'^accounts/loggedin/$', views.loggedin),
+        url(r'^accounts/logout/$', views.logout, name='logout'),
+        url(r'^accounts/loggedin/$', views.loggedin, name='loggedin'),
         url(r'^accounts/invalid/$', views.invalid_login),
+        url(r'^accounts/user_exists/$', views.register_user),
+        url(r'^registration/register/$', views.register_user, name='register'),
+        url(r'^registration/register_success/$', views.register_success, name='register_success'),
         url(r'^admin/', admin.site.urls),
 )

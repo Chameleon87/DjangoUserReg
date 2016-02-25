@@ -1,4 +1,6 @@
 {% extends 'base/base.html' %}
 {% block content %}
 Hello, World!
+<p>Please, <a href="{% url 'login' %}">Log in</a>!</p>
+<p>Or, if you're new, <a href="{% url 'register' %}">Register</a>!</p>
 {% endblock %}
