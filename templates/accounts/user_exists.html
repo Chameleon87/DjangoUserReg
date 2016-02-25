@@ -1,0 +1,9 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+<h2>Sorry, user already exists!</h2>
+
+<p>Click here to <a href="{% url 'login' %}">Login</a>!</p>
+<p>Click here to <a href="{% url 'register' %}">Register</a>!</p>
+
+{% endblock %}
