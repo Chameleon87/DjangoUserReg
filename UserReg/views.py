@@ -18,7 +18,7 @@ def auth_view(request):
     user = auth.authenticate(username=username, password=password)
     if user is not None:
         auth.login(request, user)
-        return render(request, 'accounts/loggedin.html')
+        return render(request, 'profile.html')
     else:
         return HttpResponseRedirect('accounts/invalid')
 
@@ -41,8 +41,8 @@ def register_user(request):
             form.save()
             return render(request, 'accounts/register_success.html')
         else:
-            form = RegistrationForm()
-            return render(request, 'accounts/user_exists.html')
+            return render(request, 'accounts/register.html',
+                    { "form" : form })
     else:
         return render(request, 'accounts/register.html',
                 { "form" : form })
