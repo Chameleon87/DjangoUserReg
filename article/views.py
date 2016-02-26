@@ -42,10 +42,7 @@ def create_article(request):
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/articles/all')
-        else:
-            form = ArticleForm()
-            return render(request, 'article/create_article.html')
-    else:
-        return render(request, 'article/create_article.html',
-                { "form" : form })
+
+    return render(request, 'article/create_article.html',
+            { "form" : form })
 
