@@ -2,12 +2,7 @@ from django.shortcuts import render_to_response, render
 from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
-from django.template.context_processors import csrf
-from django.core.urlresolvers import reverse
-from forms import RegistrationForm
-
-
-
+from UserReg.forms import RegistrationForm
 
 def index(request):
     return render(request, 'index.html')
@@ -27,9 +22,9 @@ def auth_view(request):
 
 def loggedin(request):
     return render_to_response('accounts/loggedin.html',
-                    {'full_name': request.user.username})
+                              {'full_name': request.user.username})
 
-def invalid_login(request):
+def invalid_login():
     return render_to_response('accounts/invalid_login.html')
 
 def logout(request):
@@ -45,13 +40,13 @@ def register_user(request):
             return render(request, 'accounts/register_success.html')
         else:
             return render(request, 'accounts/register.html',
-                    { "form" : form })
+                          {"form" : form})
     else:
         return render(request, 'accounts/register.html',
-                { "form" : form })
+                      {"form" : form})
 
 
-def register_success(request):
+def register_success():
     return render_to_response('register_success.html')
 
 @login_required
@@ -66,9 +61,9 @@ def user_profile(request):
             return render(request, 'accounts/user_profile.html')
         else:
             return render(request, 'accounts/user_profile.html',
-                    { "form" : form })
+                          {"form" : form})
     else:
         return render_to_response('accounts/user_profile.html', {
-        "user" : request.user,
-        "form" : form,
+            "user" : request.user,
+            "form" : form,
         })
