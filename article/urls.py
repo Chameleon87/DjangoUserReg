@@ -1,10 +1,10 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-        url(r'^$', views.articles, name='all'),
-        url(r'^all/$', views.articles, name='all'),
-        url(r'^get/(?P<article_id>\d+)/$', views.article, name='get'),
-        url(r'^language/(?P<language>[a-z\-]+)/$', views.language),
-        url(r'^create/$', views.create_article, name='create'),
+    url(r'^$', views.articles, name='all'),
+    url(r'^all/$', views.articles, name='all'),
+    url(r'^get/(?P<article_id>\d+)/$', views.article, name='get'),
+    url(r'^language/(?P<language>[a-z\-]+)/$', views.language),
+    url(r'^create/$', views.create_article, name='create'),
 ]
