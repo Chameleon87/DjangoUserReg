@@ -1,11 +1,13 @@
 from django.shortcuts import render_to_response, render
-from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib import auth
-from forms import RegistrationForm
+from django.contrib.auth.decorators import login_required
 from django.template.context_processors import csrf
 from django.core.urlresolvers import reverse
-from django.contrib.auth.decorators import login_required
+from forms import RegistrationForm
+
+
+
 
 def index(request):
     return render(request, 'index.html')

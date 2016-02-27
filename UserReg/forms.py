@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from models import UserProfile
+from UserReg.models import UserProfile
 
 class RegistrationForm(UserCreationForm):
 
@@ -39,10 +39,10 @@ class UserProfileForm(forms.ModelForm):
 
     def save(self, *args, **kw):
         super(UserProfileForm, self).save(*args, **kw)
-        user.email = self.cleaned_data.get('email')
-        user.first_name = self.cleaned_data.get('first_name')
-        user.last_name = self.cleaned_data.get('last_name')
-        user.save()
+        User.email = self.cleaned_data.get('email')
+        User.first_name = self.cleaned_data.get('first_name')
+        User.last_name = self.cleaned_data.get('last_name')
+        User.save()
 
     class Meta:
         model = UserProfile
