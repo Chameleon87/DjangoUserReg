@@ -5,6 +5,7 @@ from django.contrib import auth
 from forms import RegistrationForm
 from django.template.context_processors import csrf
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     return render(request, 'index.html')
@@ -18,7 +19,7 @@ def auth_view(request):
     user = auth.authenticate(username=username, password=password)
     if user is not None:
         auth.login(request, user)
-        return render(request, 'profile.html')
+        return render(request, 'accounts/user_profile.html')
     else:
         return HttpResponseRedirect('accounts/invalid')
 
@@ -50,3 +51,22 @@ def register_user(request):
 
 def register_success(request):
     return render_to_response('register_success.html')
+
+@login_required
+def user_profile(request):
+    form = UserProfileForm()
+    """ User Profile Page """
+    u = User.objects.get(pk=request.user.pk)
+    if request.method == "POST":
+        form = UserProfileForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'accounts/user_profile.html')
+        else:
+            return render(request, 'accounts/user_profile.html',
+                    { "form" : form })
+    else:
+        return render_to_response('accounts/user_profile.html', {
+        "user" : request.user,
+        "form" : form,
+        })

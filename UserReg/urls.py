@@ -16,11 +16,18 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from . import views
+#App urls
 from article import urls
+from userprofiles import urls
 
 urlpatterns = [
+		#App urls
+        url(r'^articles/', include('article.urls')),
+		url(r'^accounts/', include('userprofiles.urls')),
+
         url(r'^$', views.index, name='home'),
         url(r'^index/$', views.index, name='home'),
+        #User auth urls
         url(r'^accounts/login/$', views.login, name='login'),
         url(r'^accounts/auth/$', views.auth_view),
         url(r'^accounts/logout/$', views.logout, name='logout'),
@@ -29,6 +36,6 @@ urlpatterns = [
         url(r'^accounts/user_exists/$', views.register_user),
         url(r'^accounts/register/$', views.register_user, name='register'),
         url(r'^accounts/register_success/$', views.register_success, name='register_success'),
-        url(r'^articles/', include('article.urls')),
+        #Admin url
         url(r'^admin/', admin.site.urls),
 ]
