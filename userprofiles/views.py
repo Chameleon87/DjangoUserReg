@@ -11,7 +11,7 @@ def user_profile(request):
         form = UserProfileForm(request.POST, instance=request.user.profile)
         if form.is_valid():
             form.save()
-            return render(request, 'accounts/loggedin.html')
+            return render(request, 'accounts/user_profile.html')
         else:
             form = UserProfileForm()
             return render(request, 'user_profile.html', {"form" : form})
