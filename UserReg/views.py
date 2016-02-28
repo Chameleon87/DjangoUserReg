@@ -19,10 +19,6 @@ def auth_view(request):
     else:
         return HttpResponseRedirect('accounts/invalid')
 
-def loggedin(request):
-    return render_to_response('accounts/loggedin.html',
-                              {'full_name': request.user.username})
-
 def invalid_login():
     return render_to_response('accounts/invalid_login.html')
 
@@ -43,7 +39,3 @@ def register_user(request):
     else:
         return render(request, 'accounts/register.html',
                       {"form" : form})
-
-
-def register_success():
-    return render_to_response('register_success.html')

@@ -21,7 +21,7 @@ from article import urls
 from userprofiles import urls
 
 urlpatterns = [
-		  #App urls
+    #App urls
     url(r'^articles/', include('article.urls')),
     url(r'^accounts/', include('userprofiles.urls')),
 
@@ -31,11 +31,9 @@ urlpatterns = [
     url(r'^accounts/login/$', views.login, name='login'),
     url(r'^accounts/auth/$', views.auth_view),
     url(r'^accounts/logout/$', views.logout, name='logout'),
-    url(r'^accounts/loggedin/$', views.loggedin, name='loggedin'),
     url(r'^accounts/invalid/$', views.invalid_login),
     url(r'^accounts/user_exists/$', views.register_user),
     url(r'^accounts/register/$', views.register_user, name='register'),
-    url(r'^accounts/register_success/$', views.register_success, name='register_success'),
     #Admin url
     url(r'^admin/', admin.site.urls),
 ]

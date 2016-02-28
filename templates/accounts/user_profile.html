@@ -1,15 +1,15 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<h2>Welcome, {{ user.username }}</h2>
+<div class="container">
+    <h2>Welcome, {{ user.username }}</h2>
+    <a href="{% url 'all' %}">Articles</a>
+    <a href="{% url 'edit_profile' %}">Edit Profile</a>
+    <a href="{% url 'logout' %}">Logout</a>
+</div>
 
-<form action="" method="post">{% csrf_token %}
-    {{ form.as_ul }}
+    <p>Your user info!</p>
+    <p>{{ user.email }}<p>
+    {{ user.first_name }} {{ user.last_name }}
 
-    <input type='Submit' value='Submit'>
-</form>
-<p>Click <a href="{% url 'logout' %}">here</a> to logout!</p> 
-<p>Your user info!</p>
-<p>{{ user.email }}<p>
-{{ user.first_name }} {{ user.last_name }}
 {% endblock %}

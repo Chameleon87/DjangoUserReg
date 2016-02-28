@@ -20,9 +20,9 @@ def articles(request):
                                'language' : language,
                                'session_language' : session_language})
 
-def article(article_id=1):
-    return render_to_response('article/article.html',
-                              {'article' : Article.objects.get(id=article_id)})
+def article(request, id):
+    return render_to_response(request, 'article/article.html',
+                              {'article' : Article.objects.get(id)})
 
 def language(request, language='en-gb'):
     response = HttpResponse("Setting language to %s" % language)
