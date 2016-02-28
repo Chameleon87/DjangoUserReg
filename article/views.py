@@ -22,7 +22,7 @@ def articles(request):
 
 def article(request, id):
     return render_to_response(request, 'article/article.html',
-                              {'article' : Article.objects.get(id)})
+                              {'article' : Article.objects.get(pk=request.Article.id)})
 
 def language(request, language='en-gb'):
     response = HttpResponse("Setting language to %s" % language)

@@ -3,13 +3,9 @@
 {% block content %}
 <div class="container">
     <h2>Welcome, {{ user.username }}</h2>
-    <a href="{% url 'all' %}">Articles</a>
-    <a href="{% url 'edit_profile' %}">Edit Profile</a>
-    <a href="{% url 'logout' %}">Logout</a>
 </div>
-
     <p>Your user info!</p>
     <p>{{ user.email }}<p>
     {{ user.first_name }} {{ user.last_name }}
-
+    <p><a href="{% url 'edit_profile' %}">Edit</a></p>
 {% endblock %}
