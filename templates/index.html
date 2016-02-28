@@ -1,6 +1,11 @@
 {% extends 'base/base.html' %}
+
 {% block content %}
-Hello, World!
-<p>Please, <a href="{% url 'login' %}">Log in</a>!</p>
-<p>Or, if you're new, <a href="{% url 'register' %}">Register</a>!</p>
+
+{% if user.is_authenticated %}
+    <p>Welcome to the Home Page, {{ user.username }}!</p>
+{% else %}
+    <p>Welcome! This is the Home Page!</p>
+    <p>Please, login or register a new user to post on our Articles page!</p>
+{% endif %}
 {% endblock %}
