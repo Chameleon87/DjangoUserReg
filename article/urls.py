@@ -1,11 +1,11 @@
 from django.conf.urls import url, include
-from . import views
+from article.views import articles, article, create_article
 
 urlpatterns = [
-    url(r'^$', views.articles, name='all'),
-    url(r'^all/$', views.articles, name='all'),
-    url(r'^get/(?P<article_id>\d+)/$', views.article, name='get'),
-    url(r'^create/$', views.create_article, name='create'),
-    #App urls 
+    url(r'^$', articles, name='all'),
+    url(r'^all/$', articles, name='all'),
+    url(r'^get/(?P<article_id>\d+)/$', article, name='get'),
+    url(r'^create/$', create_article, name='create'),
+    #App urls
     url(r'^accounts/', include('userprofiles.urls')),
 ]
