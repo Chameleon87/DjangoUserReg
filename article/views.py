@@ -8,9 +8,9 @@ def articles(request):
     return render_to_response('article/articles.html',
                               {'articles' : Article.objects.all()})
 
-def article(request, article_id = 1):
+def article(request, article_id=1):
     return render_to_response(request, 'article/article.html',
-                              {'article' : Article.objects.get(id = article_id[0])})
+                              {'article' : Article.objects.get(id=article_id)})
 
 def create_article(request):
     form = ArticleForm()
