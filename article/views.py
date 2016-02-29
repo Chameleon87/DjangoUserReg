@@ -1,5 +1,4 @@
 from django.shortcuts import render, render_to_response
-from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from article.models import Article
 from article.forms import ArticleForm
@@ -9,9 +8,9 @@ def articles(request):
     return render_to_response('article/articles.html',
                               {'articles' : Article.objects.all()})
 
-def article(request, article_id):
+def article(request, article_id = 1):
     return render_to_response(request, 'article/article.html',
-                              {'article' : Article.objects.get(id)})
+                              {'article' : Article.objects.get(id = article_id[0])})
 
 def create_article(request):
     form = ArticleForm()
