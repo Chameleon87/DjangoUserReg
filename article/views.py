@@ -6,32 +6,12 @@ from article.forms import ArticleForm
 # Create your views here.
 
 def articles(request):
-    language = 'en-gb'
-    session_language = 'en-gb'
-
-    if 'lang' in request.COOKIES:
-        language = request.COOKES['lang']
-
-    if 'lang' in request.session:
-        session_language = request.session['lang']
-
     return render_to_response('article/articles.html',
-                              {'articles' : Article.objects.all(),
-                               'language' : language,
-                               'session_language' : session_language})
+                              {'articles' : Article.objects.all()})
 
-def article(request, id):
+def article(request, article_id):
     return render_to_response(request, 'article/article.html',
-                              {'article' : Article.objects.get(pk=request.Article.id)})
-
-def language(request, language='en-gb'):
-    response = HttpResponse("Setting language to %s" % language)
-
-    response.set_cookie('lang', language)
-
-    request.session['lang'] = language
-
-    return response
+                              {'article' : Article.objects.get(id)})
 
 def create_article(request):
     form = ArticleForm()
