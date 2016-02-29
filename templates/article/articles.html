@@ -2,15 +2,12 @@
 
 {% block content %}
 <a href="{% url 'create' %}">Post</a>
-<h2>Language is: {{language}}</h2>
-
-<h2>Session language is: {{session_language}}</h2>
 
 {% if articles.count > 0 %}
 
 {% for article in articles %}
 <div>
-    <h2><a href="/articles/get/{{article.id}}/">{{article.title}}</a></h2>
+    <h2><a href="articles/get/{{id}}">{{article.title}}</a></h2>
     <p>{{article.body|lower|truncatewords:"10"}}</p>
 </div>
 {% endfor %}
