@@ -16,7 +16,7 @@ def edit_user_profile(request):
             form.save()
             return render(request, 'accounts/user_profile.html')
         else:
-            form = UserProfileForm(instance=profile)
+            form = UserProfileForm(instance=user_profile)
     else:
         form = UserProfileForm()
         if form.is_valid():
