@@ -10,7 +10,7 @@ def articles(request):
 
 def article(request, article_id=1):
     return render_to_response(request, 'article/article.html',
-                              {'article' : Article.objects.get(id=article_id)})
+                              {'article' : Article.objects.get(pk=article_id)})
 
 def create_article(request):
     form = ArticleForm()
