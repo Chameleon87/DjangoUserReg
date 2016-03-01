@@ -1,26 +1,42 @@
-from django.shortcuts import render, render_to_response
-from django.http import HttpResponse
-from django.http import HttpResponseRedirect
+from django.shortcuts import render_to_response, get_object_or_404
+from django.http import HttpResponseRedirect, HttpResponseForbidden
+from django.core.urlresolvers import reverse
+from django.contrib import messages
+from django.template import RequestContext
+from django.utils.translation import ugettext as _
+from django.contrib.auth.decorators import login_required
 from article.models import Article
 from article.forms import ArticleForm
 # Create your views here.
-
 def articles(request):
     return render_to_response('article/articles.html',
                               {'articles' : Article.objects.all()})
 
-def article(request, article_id):
+def article(request, article_id=1):
     return render_to_response(request, 'article/article.html',
-                              {'article' : Article.objects.get(id)})
+                              {'article' : Article.objects.get(pk=article_id)})
 
-def create_article(request):
-    form = ArticleForm()
-    if request.method == 'POST':
-        form = ArticleForm(request.POST)
+@login_required
+def edit_article(request, id=None, template_name='article/create_article.html'):
+    if id:
+        article = get_object_or_404(Article, pk=id)
+        if article.user != request.user:
+            return HttpResponseForbidden()
+    else:
+        article = Article(user=request.user)
+
+    if request.POST:
+        form = ArticleForm(request.POST, instance=article)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/articles/all')
+            messages.add_message(request, messages.SUCCESS, _('Article correctly saved.'))
+            # If the save was successful, redirect to another page
+            redirect_url = reverse('all')
+            return HttpResponseRedirect(redirect_url)
 
-    return render(request, 'article/create_article.html',
-                  {"form" : form})
+    else:
+        form = ArticleForm(instance=article)
 
+    return render_to_response(template_name, {
+        'form': form,
+    }, context_instance=RequestContext(request))
