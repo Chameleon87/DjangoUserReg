@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 from django.contrib.auth.forms import UserCreationForm
-from userprofiles.models import User
+from django.contrib.auth.models import User
 
 
 class RegistrationForm(UserCreationForm):
