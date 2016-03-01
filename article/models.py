@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 class Article(models.Model):
-    id = models.AutoField(primary_key=True)
+    article_id = models.AutoField(primary_key=True, default=0)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     body = models.TextField()
