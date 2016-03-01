@@ -7,25 +7,26 @@ from django.utils.translation import ugettext as _
 from django.contrib.auth.decorators import login_required
 from article.models import Article
 from article.forms import ArticleForm
+
 # Create your views here.
 def articles(request):
     return render_to_response('article/articles.html',
                               {'articles' : Article.objects.all()})
 
-def article(request, article_id=1):
+def article(request, pk=1):
     return render_to_response(request, 'article/article.html',
-                              {'article' : Article.objects.get(pk=article_id)})
+                              {'article' : Article.objects.get(pk=pk)})
 
 @login_required
-def edit_article(request, id=None, template_name='article/create_article.html'):
-    if id:
-        article = get_object_or_404(Article, pk=id)
+def edit_article(request, pk=None, template_name='article/create_article.html'):
+    if pk:
+        article = get_object_or_404(Article, pk=pk)
         if article.user != request.user:
             return HttpResponseForbidden()
     else:
         article = Article(user=request.user)
 
-    if request.POST:
+    if request.method == "POST":
         form = ArticleForm(request.POST, instance=article)
         if form.is_valid():
             form.save()
