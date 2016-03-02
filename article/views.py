@@ -18,7 +18,7 @@ def article(request, article_id):
                               {'article' : get_object_or_404(Article, id=article_id)})
 
 @login_required
-def edit_article(request, pk=None, template_name='article/create_article.html'):
+def edit_article(request, pk=None ):
     if pk:
         article = get_object_or_404(Article, pk=pk)
         if article.user != request.user:
@@ -38,6 +38,6 @@ def edit_article(request, pk=None, template_name='article/create_article.html'):
     else:
         form = ArticleForm(instance=article)
 
-    return render_to_response(template_name, {
+    return render_to_response('article/create_article.html', {
         'form': form,
     }, context_instance=RequestContext(request))
