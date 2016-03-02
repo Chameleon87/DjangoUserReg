@@ -15,7 +15,7 @@ def articles(request):
 
 def article(request, article_id):
     return render_to_response('article/article.html',
-                              {'article' : Article.objects.get(id=article_id)})
+                              {'article' : get_object_or_404(article, id=article_id)})
 
 @login_required
 def edit_article(request, pk=None, template_name='article/create_article.html'):
