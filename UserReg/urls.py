@@ -13,27 +13,29 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+#Django imports
 from django.conf.urls import url, include
 from django.contrib import admin
-from . import views
 #App urls
 from article import urls
 from userprofiles import urls
+#Local urls
+from UserReg.views import login, auth_view, logout, invalid_login, register_user
 
 urlpatterns = [
     #App urls
     url(r'^articles/', include('article.urls')),
     url(r'^accounts/', include('userprofiles.urls')),
-
+    #Home urls
     url(r'^$', views.index, name='home'),
     url(r'^index/$', views.index, name='home'),
     #User auth urls
-    url(r'^accounts/login/$', views.login, name='login'),
-    url(r'^accounts/auth/$', views.auth_view),
-    url(r'^accounts/logout/$', views.logout, name='logout'),
-    url(r'^accounts/invalid/$', views.invalid_login),
-    url(r'^accounts/user_exists/$', views.register_user),
-    url(r'^accounts/register/$', views.register_user, name='register'),
+    url(r'^accounts/login/$', login, name='login'),
+    url(r'^accounts/auth/$', auth_view),
+    url(r'^accounts/logout/$', logout, name='logout'),
+    url(r'^accounts/invalid/$', invalid_login),
+    url(r'^accounts/user_exists/$', register_user),
+    url(r'^accounts/register/$', register_user, name='register'),
     #Admin url
     url(r'^admin/', admin.site.urls),
 ]

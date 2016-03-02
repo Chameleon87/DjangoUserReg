@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'UserReg',
     'userprofiles',
     'django_extensions',
+    'crispy_forms',
 ]
 
 MIDDLEWARE_CLASSES = [
