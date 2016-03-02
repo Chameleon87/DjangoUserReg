@@ -1,7 +1,6 @@
 <html>
     <head>
     </head>
-
 <body>
 <div class="navbar">
     {% if user.is_authenticated %}
@@ -15,9 +14,8 @@
     <a href="{% url 'login' %}">Login</a>
     {% endif %}
 </div>
-
         {% block content %}
         {% endblock %}
-    </body>
+</body>
 </html>
 
