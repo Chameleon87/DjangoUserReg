@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response, render
 from django.http import HttpResponseRedirect
 from django.contrib import auth
-from UserReg.forms import RegistrationForm, LoginForm
+from UserReg.forms import RegistrationForm
 
 def index(request):
     return render(request, 'index.html')
