@@ -1,7 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.core.urlresolvers import reverse
-from django.contrib import messages
 from django.template import RequestContext
 from django.utils.translation import ugettext as _
 from django.contrib.auth.decorators import login_required
@@ -30,7 +29,6 @@ def edit_article(request, pk=None ):
         form = ArticleForm(request.POST, instance=article)
         if form.is_valid():
             form.save()
-            messages.add_message(request, messages.SUCCESS, _('Article correctly saved.'))
             # If the save was successful, redirect to another page
             redirect_url = reverse('all')
             return HttpResponseRedirect(redirect_url)
