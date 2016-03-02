@@ -13,9 +13,9 @@ def articles(request):
     return render_to_response('article/articles.html',
                               {'articles' : Article.objects.all()})
 
-def article(request, pk=1):
-    return render_to_response(request, 'article/article.html',
-                              {'article' : Article.objects.get(pk=pk)})
+def article(request, article_id):
+    return render_to_response('article/article.html',
+                              {'article' : Article.objects.get(id=article_id)})
 
 @login_required
 def edit_article(request, pk=None, template_name='article/create_article.html'):
