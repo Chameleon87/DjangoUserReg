@@ -11,16 +11,21 @@ def user_profile(request):
 @login_required
 def edit_user_profile(request):
     if request.method == "POST":
+        print "a"
         form = UserProfileForm(data=request.POST, instance=request.user.profile)
         if form.is_valid():
+            print "b"
             form.save()
             return render(request, 'accounts/user_profile.html')
         else:
-            form = UserProfileForm(instance=user_profile)
+            print "c"
+            return render(request, 'accounts/edit_profile.html', {"form" : form })
     else:
+        print "e"
         form = UserProfileForm()
         if form.is_valid():
             form.save()
             return render(request, 'accounts/user_profile.html')
         else:
+            print "d"
             return render(request, 'accounts/edit_profile.html', {"form" : form })
