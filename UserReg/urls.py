@@ -20,15 +20,15 @@ from django.contrib import admin
 from article import urls
 from userprofiles import urls
 #Local urls
-from UserReg.views import login, auth_view, logout, invalid_login, register_user
+from UserReg.views import index, login, auth_view, logout, invalid_login, register_user
 
 urlpatterns = [
     #App urls
     url(r'^articles/', include('article.urls')),
     url(r'^accounts/', include('userprofiles.urls')),
     #Home urls
-    url(r'^$', views.index, name='home'),
-    url(r'^index/$', views.index, name='home'),
+    url(r'^$', index, name='home'),
+    url(r'^index/$', index, name='home'),
     #User auth urls
     url(r'^accounts/login/$', login, name='login'),
     url(r'^accounts/auth/$', auth_view),
