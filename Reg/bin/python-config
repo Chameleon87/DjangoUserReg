@@ -1,4 +1,4 @@
-#!/Users/jessehodge/Documents/Projects/Django/UserReg/Reg/bin/python
+#!/Users/jessehodge/Documents/Projects/Django/DjangoUserReg/Reg/bin/python
 
 import sys
 import getopt
