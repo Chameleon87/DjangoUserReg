@@ -4,14 +4,14 @@
 <body>
 <div class="navbar">
     {% if user.is_authenticated %}
-    <a href="{% url 'home' %}">Home</a>
-    <a href="{% url 'user_profile' %}">Profile</a>
-    <a href="{% url 'all' %}">Articles</a>
-    <a href="{% url 'logout' %}">Logout</a>
+    	<a href="{% url 'home' %}">Home</a>
+    	<a href="{% url 'user_profile' %}">Profile</a>
+    	<a href="{% url 'all' %}">Articles</a>
+    	<a href="{% url 'logout' %}">Logout</a>
     {% else %}
-    <a href="{% url 'home' %}">Home</a>
-    <a href="{% url 'register' %}">Register</a>
-    <a href="{% url 'login' %}">Login</a>
+    	<a href="{% url 'home' %}">Home</a>
+    	<a href="{% url 'register' %}">Register</a>
+    	<a href="{% url 'login' %}">Login</a>
     {% endif %}
 </div>
         {% block content %}
