@@ -32,7 +32,7 @@ def register_user(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'accounts/user_profile.html')
+            return render(request, 'accounts/login.html')
         else:
             return render(request, 'accounts/register.html',
                           {"form" : form})
