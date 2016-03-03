@@ -21,7 +21,7 @@ SECRET_KEY = '7pkxdk20+pknopt%%kzqesptnq*u@*@8&!((f)gk#yd6t44kg1'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False 
 
 ALLOWED_HOSTS = []
 
@@ -122,6 +122,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = '/static/'
+STATIC_ROOT = '/staticfiles/'
 STATIC_URL = '/static/'
 AUTH_PROFILE_MODULE = 'userprofile.UserProfile'
