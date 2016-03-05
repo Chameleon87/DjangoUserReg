@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(__file__)
 
-SECRET_KEY = '7pkxdk20+pknopt%%kzqesptnq*u@*@8&!((f)gk#yd6t44kg1'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
@@ -23,7 +22,7 @@ SECRET_KEY = '7pkxdk20+pknopt%%kzqesptnq*u@*@8&!((f)gk#yd6t44kg1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['home.jessehodge.me', 'www.home.jessehodge.me']
 
 
 # Application definition
@@ -129,5 +128,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 AUTH_PROFILE_MODULE = 'userprofile.UserProfile'
