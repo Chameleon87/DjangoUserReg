@@ -1,0 +1,9 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+  <form action="/accounts/edit_profile/" method="post">{% csrf_token %}
+      {{ form.as_ul }}
+
+      <input type='Submit' value='Submit'>
+  </form>
+{% endblock %}
