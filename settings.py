@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(__file__)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False 
 
-ALLOWED_HOSTS = ['home.jessehodge.me', 'www.home.jessehodge.me']
+ALLOWED_HOSTS = ['home.jessehodge.me', 'www.home.jessehodge.me', '127.0.0.1:8002']
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SECURE = True
