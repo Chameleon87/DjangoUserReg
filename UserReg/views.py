@@ -20,7 +20,7 @@ def auth_view(request):
         return HttpResponseRedirect('accounts/invalid')
 
 def invalid_login():
-    return render_to_response('accounts/invalid_login.html')
+    return render_to_response('accounts/invalid.html')
 
 def logout(request):
     auth.logout(request)
