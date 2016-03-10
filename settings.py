@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #Apps
     'article',
+    'bootstrap3',
     'UserReg',
     'userprofiles',
     'django_extensions',
