@@ -25,18 +25,15 @@ def edit_article(request, pk=None ):
             return HttpResponseForbidden()
     else:
         article = Article(user=request.user)
-
+		
     if request.method == "POST":
-        form = ArticleForm(request.POST, instance=article)
-        if form.is_valid():
-            form.save()
-            # If the save was successful, redirect to another page
-            redirect_url = reverse('all')
-            return HttpResponseRedirect(redirect_url)
-
+	    form = ArticleForm(request.POST, instance=article)
     else:
-        form = ArticleForm(instance=article)
-
-    return render_to_response('article/create_article.html', {
-        'form': form,
-    }, context_instance=RequestContext(request))
+	    form = ArticleForm(instance=article)
+		
+    if form.is_valid():
+	    form.save()
+	    redirect_url = reverse('all')
+	    return HttpResponseRedirect(redirect_url)
+    else:
+	    return render_to_response('article/create_article.html', {'form': form}, context_instance=RequestContext(request))
