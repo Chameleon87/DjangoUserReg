@@ -12,6 +12,7 @@ def articles(request):
     return render_to_response('article/articles.html',
                               {'articles' : Article.objects.all()})
 
+@login_required
 def article(request, article_id):
     return render_to_response('article/article.html',
                               {'article' : get_object_or_404(Article, id=article_id)})
