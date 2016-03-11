@@ -17,7 +17,7 @@ def auth_view(request):
         auth.login(request, user)
         return render(request, 'accounts/user_profile.html')
     else:
-        return HttpResponseRedirect('accounts/invalid')
+        return render(request, 'accounts/invalid.html')
 
 def invalid_login():
     return render_to_response('accounts/invalid.html')
