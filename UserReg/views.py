@@ -27,15 +27,13 @@ def logout(request):
     return render(request, 'accounts/logout.html')
 
 def register_user(request):
-    form = RegistrationForm()
-    if request.method == 'POST':
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return render(request, 'accounts/login.html')
-        else:
-            return render(request, 'accounts/register.html',
-                          {"form" : form})
-    else:
-        return render(request, 'accounts/register.html',
-                      {"form" : form})
+	if request.method == "POST":
+		form = RegistrationForm(request.POST)
+	else:
+		form = RegistrationForm()
+		
+	if form.is_valid():
+		form.save()
+		return render(request, 'accounts/login.html')
+	else:
+		return render(request, 'accounts/register.html', {"form" : form})

@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
@@ -9,12 +9,12 @@ from article.forms import ArticleForm
 
 # Create your views here.
 def articles(request):
-    return render_to_response('article/articles.html',
+    return render(request, 'article/articles.html',
                               {'articles' : Article.objects.all()})
 
 @login_required
 def article(request, article_id):
-    return render_to_response('article/article.html',
+    return render(request, 'article/article.html',
                               {'article' : get_object_or_404(Article, id=article_id)})
 
 @login_required
@@ -28,15 +28,12 @@ def edit_article(request, pk=None ):
 
     if request.method == "POST":
         form = ArticleForm(request.POST, instance=article)
-        if form.is_valid():
-            form.save()
-            # If the save was successful, redirect to another page
-            redirect_url = reverse('all')
-            return HttpResponseRedirect(redirect_url)
-
     else:
         form = ArticleForm(instance=article)
 
-    return render_to_response('article/create_article.html', {
-        'form': form,
-    }, context_instance=RequestContext(request))
+    if form.is_valid():
+        form.save()
+        redirect_url = reverse('all')
+        return redirect(redirect_url)
+    else:
+        return render(request, 'article/create_article.html', {'form': form})
