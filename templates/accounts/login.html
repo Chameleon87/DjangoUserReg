@@ -1,18 +1,33 @@
 {% extends 'base/base.html' %}
+{% load bootstrap3 %}
+{% load staticfiles %}
 {% block content %}
-
     {% if form.errors %}
         <p class="error">Sorry, that's not a valid username or passowrd.</P>
     {% endif %}
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-md-offset-4">
+                <div class="account-wall">
+                    <form class="form-signin" action= "/accounts/auth/" method="post">{% csrf_token %}
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" name="username" value="" id="username">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control"name="password" value="" id="password">
+						<button class="btn btn-lg btn-primary btn-block" type="submit">
+						Sign in</button>
+						<label class="checkbox pull-left">
+						<input type="checkbox" value="remember-me">
+							Remember me
+						</label>
+						<a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+                        <input type="submit" value="Login">
 
-    <form action= "/accounts/auth/" method="post">{% csrf_token %}
-        <label for="username">Username</label>
-        <input type="text" name="username" value="" id="username">
-        <label for="password">Password</label>
-        <input type="password" name="password" value="" id="password">
-
-        <input type="submit" value="Login">
-
-    </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
