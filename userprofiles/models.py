@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
+from localflavor.us.models import PhoneNumberField, USZipCodeField, USSocialSecurityNumberField
+from localflavor.us.us_states import STATE_CHOICES
 
 # Create your models here.
 class UserProfile(models.Model):
@@ -9,17 +11,17 @@ class UserProfile(models.Model):
     email = models.EmailField()
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    phone_number = models.CharField(max_length=15, null=True)
+    phone_number = PhoneNumberField(null=True)
 
     #Address
     address1 = models.CharField(max_length=100, null=True)
     address2 = models.CharField(max_length=100, null=True)
     city = models.CharField(max_length=50, null=True)
     state = models.CharField(max_length=50, null=True)
-    zip_code = models.CharField(max_length=20, null=True)
+    zip_code = USZipCodeField(null=True)
 
     #Confidential
-    ssn = models.CharField(max_length=12, null=True)
+    ssn = USSocialSecurityNumberField(null=True)
 
     def __unicode__(self):
         return str(self.email)
