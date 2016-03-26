@@ -8,5 +8,5 @@ class UserProfileForm(ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ('email', 'first_name', 'last_name',)
-	exclude = ('User',)
+        fields = ('__all__')
+        exclude = ('user',)
