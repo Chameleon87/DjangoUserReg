@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'UserReg',
     'userprofiles',
     'django_extensions',
+    'localflavor',
 ]
 
 MIDDLEWARE_CLASSES = [
