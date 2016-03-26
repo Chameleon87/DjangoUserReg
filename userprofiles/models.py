@@ -11,6 +11,6 @@ class UserProfile(models.Model):
     last_name = models.CharField(max_length=30)
 
     def __unicode__(self):
-        return str(self)
+        return str(self.email)
 
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
