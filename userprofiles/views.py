@@ -19,4 +19,5 @@ def edit_user_profile(request):
         form.save()
         return render(request, 'accounts/user_profile.html')
     else:
+	print "This isn't right"
         return render(request, 'accounts/edit_profile.html', {"form" : form })

@@ -1,8 +1,9 @@
 {% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="container">
-    <h2>Welcome, {{ user.username }}</h2>
+    <div class='jumbotron'>Welcome, {{ user.username }}!</div>
 </div>
     <p>Your user info!</p>
 <p>{{ user.profile.email }}</p>
