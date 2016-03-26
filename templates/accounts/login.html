@@ -1,22 +1,4 @@
 {% extends 'base/base.html' %}
-{% load bootstrap3 %}
-<<<<<<< HEAD
-{% block content %}
-<div class="container">
-	<div class="col-lg-6 col-md-6 col-xs-12">
-		<div class="account-wall">
-			{% if form.errors %}
-				<p class="error">Sorry, that's not a valid username or passowrd.</P>
-			{% endif %}
-
-			<form class="form-signin" action= "/accounts/auth/" method="post">{% csrf_token %}
-				<label for="username">Username</label>
-				<input type="text" class="form-control" name="username" value="" id="username">
-				<label for="password">Password</label>
-				<input type="password" class="form-control" name="password" value="" id="password">
-
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
-=======
 {% load staticfiles %}
 {% block content %}
     {% if form.errors %}
@@ -46,10 +28,4 @@
             </div>
         </div>
     </div>
->>>>>>> c13372ef217958613acdc55ae00887226f436059
-
-			</form>
-		</div>
-	</div>
-</div>
 {% endblock %}

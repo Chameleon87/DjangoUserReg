@@ -9,17 +9,17 @@ class UserProfile(models.Model):
     email = models.EmailField()
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    phone_number = models.CharField(max_length=15)
+    phone_number = models.CharField(max_length=15, null=True)
 
     #Address
-    address1 = models.CharField(max_length=100)
-    address2 = models.CharField(max_length=100)
-    city = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    zip_code = models.CharField(max_length=20)
+    address1 = models.CharField(max_length=100, null=True)
+    address2 = models.CharField(max_length=100, null=True)
+    city = models.CharField(max_length=50, null=True)
+    state = models.CharField(max_length=50, null=True)
+    zip_code = models.CharField(max_length=20, null=True)
 
     #Confidential
-    ssn = models.CharField(max_length=12)
+    ssn = models.CharField(max_length=12, null=True)
 
     def __unicode__(self):
         return str(self.email)
