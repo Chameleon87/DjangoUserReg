@@ -1,14 +1,32 @@
 {% extends 'base/base.html' %}
+{% load bootstrap3 %}
 
 {% block content %}
-<div class="container">
+<div class="jumbotron">
     <h2>Welcome, {{ user.username }}</h2>
+    <div class="col-lg-12 col-md-12 col-xs-12">
+        <button class="btn btn-default">
+            <span class="glyphicon glyphicon-user"></span>
+        </button>
+        <button class="btn btn-default">
+            <span class="glyphicon glyphicon-home">
+        </button>
+    </div>
 </div>
-    <p>Your user info!</p>
-<p>{{ user.profile.email }}</p>
-<p> {{ user.profile.first_name }} {{ user.profile.last_name }}</p>
-<p> {{user.profile.phone_number}} Ssn: {{user.profile.ssn}}</p>
-<p> {{user.profile.address1}} {{user.profile.address2}}</p>
-<p> {{user.profile.city}} {{user.profile.state}} {{user.profile.zip_code}}</p>
+
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-xs-12" id="basic-info">
+        <p>Basic Information!</p>
+        <p>{{ user.profile.email }}</p>
+        <p> {{ user.profile.first_name }} {{ user.profile.last_name }}</p>
+        <p> {{user.profile.phone_number}} Ssn: {{user.profile.ssn}}</p>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-xs-12" id="address">
+        <p> {{user.profile.address1}} {{user.profile.address2}}</p>
+        <p> {{user.profile.city}} {{user.profile.state}} {{user.profile.zip_code}}</p>
+    </div>
+</div>
+
     <p><a href="{% url 'edit_profile' %}">Edit</a></p>
 {% endblock %}
