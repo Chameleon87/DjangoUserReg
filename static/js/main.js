@@ -1,11 +1,28 @@
 $(document).ready(function () {
-    var basic = $('#basic-info');
-    var address = $('#address');
-    var user = $('#user');
-    var home = $('#home');
-    var contact = $('#contact');
+    var basic = $('#basic-info'),
+        address = $('#address'),
+        contact1 = $('#contact1'),
+        user = $('#user'),
+        home = $('#home'),
+        contact = $('#contact');
 
-    user.click().toggle(basic);
-    home.click().toggle(address);
-    
+    basic.hide();
+    address.hide();
+    contact1.hide();
+
+    user.on('click', function() {
+        address.hide();
+        contact1.hide();
+        basic.show();
+    }),
+    home.on('click', function() {
+        basic.hide();
+        contact1.hide();
+        address.show();
+    }),
+    contact.on('click', function() {
+        basic.hide();
+        address.hide();
+        contact1.show();
+    });
 });
