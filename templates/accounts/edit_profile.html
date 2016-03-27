@@ -1,9 +1,7 @@
 {% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-  <form action="/accounts/edit_profile/" method="post">{% csrf_token %}
-      {{ form.as_ul }}
-
-      <input type='Submit' value='Submit'>
-  </form>
+	{% csrf_token %}
+	{% crispy form %}
 {% endblock %}
