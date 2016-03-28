@@ -33,4 +33,3 @@ class UserProfileForm(ModelForm):
     class Meta:
         model = UserProfile
         fields = ('first_name', 'last_name', 'phone_number', 'ssn', 'address1', 'address2', 'city', 'state', 'zip_code',)
-        exclude = ('user',)
