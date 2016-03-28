@@ -11,24 +11,24 @@ class UserProfileForm(ModelForm):
     helper.form_action = "/accounts/edit_profile/"
     helper.add_input(Submit('submit', 'Submit'))
     helper.layout = Layout(
-	TabHolder(
-       Tab(
-		'Basic Information',
-		'first_name',
-		'last_name',
-		'phone_number',
-		'ssn',
-      ),
-        Tab(
-		'Address',
-		'address1',
-		'address2',
-		'city',
-		'state',
-		'zip_code',
+        TabHolder(
+            Tab(
+                'Basic Information',
+                'first_name',
+                'last_name',
+                'phone_number',
+                'ssn',
+            ),
+            Tab(
+                'Address',
+                'address1',
+                'address2',
+                'city',
+                'state',
+                'zip_code',
+            )
         )
-	)
-)
+    )
 
     class Meta:
         model = UserProfile
