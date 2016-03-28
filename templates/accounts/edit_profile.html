@@ -1,7 +1,39 @@
 {% extends 'base/base.html' %}
 {% load crispy_forms_tags %}
 
+{% block extrahead %}
+<script>
+$(function() {
+    var onBlur = function() {
+        var inputs = 0;
+        var filled = 0;
+
+        $('.requiredField').next().children('input').each(function(index, element) {
+            inputs += 1
+            if (element.value) {
+                filled += 1
+            }
+        });
+
+        percent = filled / inputs * 100;
+        $('#progress').width(percent + '%');
+        $('#progress').attr('aria-valuenow', percent);
+        $('#progress-text').text(percent + '% Complete');
+    }
+
+    $('input').blur(onBlur);
+
+    onBlur();
+});
+</script>
+{% endblock %}
+
 {% block content %}
-	{% csrf_token %}
-	{% crispy form %}
+    <div class="progress">
+      <div id="progress" class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+        <span id="progress-text" class="sr-only">70% Complete</span>
+      </div>
+    </div>
+    {% csrf_token %}
+    {% crispy form %}
 {% endblock %}
