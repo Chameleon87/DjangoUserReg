@@ -15,7 +15,7 @@ class UserProfile(models.Model):
 
     #Address
     address1 = models.CharField(max_length=100, null=True)
-    address2 = models.CharField(max_length=100, null=True)
+    address2 = models.CharField(max_length=100, blank=True, null=True)
     city = models.CharField(max_length=50, null=True)
     state = models.CharField(max_length=50, null=True)
     zip_code = USZipCodeField(null=True)
