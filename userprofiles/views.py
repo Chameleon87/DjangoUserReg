@@ -8,6 +8,7 @@ from userprofiles.forms import UserProfileForm
 def user_profile(request):
         return render(request, 'accounts/user_profile.html')
 
+
 @login_required
 def edit_user_profile(request):
     if request.method == "POST":
@@ -19,5 +20,5 @@ def edit_user_profile(request):
         form.save()
         return render(request, 'accounts/user_profile.html')
     else:
-	print "This isn't right"
-        return render(request, 'accounts/edit_profile.html', {"form" : form })
+        print "This isn't right"
+    return render(request, 'accounts/edit_profile.html', {"form": form})
